@@ -1,0 +1,71 @@
+<Btn@MDRoundFlatIconButton>:
+    md_bg_color: [1,1,1,1]
+    text_color: [0,0,0,1]
+    font_size: 20
+    theme_text_color: 'Custom'
+    halin: 'center'
+
+
+<Home>:
+    canvas.before:
+        Color:
+            rgba: rgba('#F0F5F8')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    MDTopAppBar:
+        title: "KIA MATH"
+        use_overflow: True
+        md_bg_color: [0,0,0,1]
+        pos_hint: {'top':1}
+        size_hint_y: .08
+        elevation: 10
+        right_action_items:
+            [
+            ["home", lambda x: app.callback(x), "Home", "Home"],
+            ["message-star", lambda x: app.callback(x), "Message star", "Message star"],
+            ["message-question", lambda x: app.callback(x), "Message question", "Message question"],
+            ["message-reply", lambda x: app.callback(x), "Message reply", "Message reply"],
+            ]
+
+
+    MDLabel:
+        text: '[color=#FADBDB]KIA CALCULATOR'
+        size_hint: 1, .2
+        markup: True
+        pos_hint: {'top': .96}
+        halign: 'center'
+        height: self.texture_size[1]
+        color: 0,0,0,1
+        font_style: 'H4'
+        bold: True
+        font_size: 40
+
+    BoxLayout:
+        size_hint: 1, .3
+        pos_hint: {'x':0, 'top':.79}
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        
+        Btn:
+            id: b1
+            text: 'BASIC'
+            size_hint: 1, .1
+            icon: 'calculator-variant'
+            on_press:
+                app.change_color('basic')
+            on_release:
+                app.change_to_basic()
+
+        Btn:
+            id: b2
+            text: 'ADVANCED'
+            size_hint: 1, .1
+            icon: 'calculator'
+            on_press:
+                app.change_color('advanced')
+            on_release:
+                app.change_to_advanced()
